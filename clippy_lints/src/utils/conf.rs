@@ -337,8 +337,8 @@ pub fn lookup_conf_file() -> io::Result<Option<PathBuf>> {
                         if let Some(ref found_config_) = found_config {
                             eprintln!(
                                 "Using config file `{}`\nWarning: `{}` will be ignored.",
-                                found_config_.display(),
-                                config_file.display(),
+                                found_config_.canonicalize().unwrap().display(),
+                                config_file.canonicalize().unwrap().display(),
                             );
                         } else {
                             found_config = Some(config_file);
